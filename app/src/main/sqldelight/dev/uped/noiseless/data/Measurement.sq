@@ -1,0 +1,13 @@
+CREATE TABLE Measurement (
+    timestamp INTEGER NOT NULL,
+    loudness REAL NOT NULL,
+    location TEXT,
+    longitude REAL,
+    latitude REAL
+);
+
+selectAllByDate:
+SELECT * FROM Measurement ORDER BY timestamp DESC;
+
+insert:
+INSERT INTO Measurement(timestamp, loudness, location, longitude, latitude) VALUES (?, ?, ?, ?, ?);

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Noiseless</string>
+    <string name="measuring">Mierzenie poziomu hałasu...</string>
+</resources>
