@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'com.squareup.sqldelight'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -33,6 +34,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+
         useIR = true
     }
     buildFeatures {
@@ -45,6 +47,12 @@ android {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
+    }
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    kotlinOptions {
+        freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
     }
 }
 
@@ -70,4 +78,11 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:18.0.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.1'
     implementation 'com.google.maps.android:maps-ktx:2.3.0'
+    implementation platform('com.google.firebase:firebase-bom:28.4.1')
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
+    implementation 'com.google.maps.android:android-maps-utils:2.2.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.5.2'
+    implementation "io.insert-koin:koin-android:3.1.2"
+    implementation 'io.insert-koin:koin-androidx-compose:3.1.2'
 }

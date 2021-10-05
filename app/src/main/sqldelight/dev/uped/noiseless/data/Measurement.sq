@@ -1,13 +1,17 @@
 CREATE TABLE Measurement (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     timestamp INTEGER NOT NULL,
     loudness REAL NOT NULL,
     location TEXT,
-    longitude REAL,
-    latitude REAL
+    longitude TEXT,
+    latitude TEXT
 );
 
 selectAllByDate:
 SELECT * FROM Measurement ORDER BY timestamp DESC;
+
+findById:
+SELECT * FROM Measurement WHERE id = ? LIMIT 1;
 
 insert:
 INSERT INTO Measurement(timestamp, loudness, location, longitude, latitude) VALUES (?, ?, ?, ?, ?);

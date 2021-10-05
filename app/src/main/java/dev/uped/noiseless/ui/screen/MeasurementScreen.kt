@@ -16,7 +16,7 @@ import dev.uped.noiseless.ui.component.DBCountCircle
 import dev.uped.noiseless.ui.theme.NoiselessTheme
 import kotlinx.coroutines.delay
 
-class MeasurementScreenViewModel() : ViewModel() {
+class MeasurementScreenViewModel : ViewModel() {
     private val measurements = mutableListOf<Double>()
 
     fun addMeasurement(measurement: Double) = measurements.add(measurement)
@@ -24,7 +24,11 @@ class MeasurementScreenViewModel() : ViewModel() {
 }
 
 @Composable
-fun MeasurementScreen(onMeasurementEnd: (averageLoudness: Double) -> Unit, viewModel: MeasurementScreenViewModel = viewModel()) {
+fun MeasurementScreen(
+    onMeasurementEnd: (averageLoudness: Double) -> Unit,
+    onCancelClicked: () -> Unit,
+    viewModel: MeasurementScreenViewModel = viewModel()
+) {
     var db by remember { mutableStateOf(0.0) }
     var dbMeter: DBMeter? by remember { mutableStateOf(null) }
     DisposableEffect(Unit) {
@@ -43,11 +47,11 @@ fun MeasurementScreen(onMeasurementEnd: (averageLoudness: Double) -> Unit, viewM
         onMeasurementEnd(viewModel.getAverage())
     }
 
-    MeasurementContent(db)
+    MeasurementContent(db, onCancelClicked)
 }
 
 @Composable
-fun MeasurementContent(dB: Double) {
+fun MeasurementContent(dB: Double, onCancelClicked: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxHeight()
@@ -58,24 +62,23 @@ fun MeasurementContent(dB: Double) {
     ) {
         Text(
             "Mierzenie poziomu głośności...",
-            style = MaterialTheme.typography.body1,
+            style = MaterialTheme.typography.h6,
             color = MaterialTheme.colors.onSurface.copy(alpha = 0.9f)
         )
 
         DBCountCircle(dB = dB, isActive = true)
 
-        OutlinedButton(onClick = { /*TODO*/ }) {
+        OutlinedButton(onClick = onCancelClicked) {
             Text("Przerwij")
         }
     }
 }
 
 
-
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun PreviewMeasurementScreen() {
     NoiselessTheme {
-        MeasurementContent(70.0)
+        MeasurementContent(70.0) {}
     }
 }
