@@ -29,7 +29,7 @@ fun dev.uped.noiseless.data.Measurement.toModel(): Measurement {
         id = id,
         timestamp = timestamp,
         latitude = latitude,
-        location = location ?: "$latitude $longitude",
+        location = location,
         longitude = longitude,
         loudness = loudness
     )

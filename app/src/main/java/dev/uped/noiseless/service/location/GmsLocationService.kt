@@ -8,17 +8,22 @@ import com.google.android.gms.tasks.CancellationTokenSource
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.tasks.await
 
-class GmsLocationService(private val fusedLocationProviderClient: FusedLocationProviderClient) : LocationService {
+class GmsLocationService(private val fusedLocationProviderClient: FusedLocationProviderClient) :
+    LocationService {
     @SuppressLint("MissingPermission")
     override suspend fun getCached(): Location {
         return fusedLocationProviderClient.lastLocation.await()
+            ?: getCurrent() // fallback to current location
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @SuppressLint("MissingPermission")
     override suspend fun getCurrent(): Location {
         val cancellationTokenSource = CancellationTokenSource()
-        val currentLocationTask = fusedLocationProviderClient.getCurrentLocation(PRIORITY_HIGH_ACCURACY, cancellationTokenSource.token)
+        val currentLocationTask = fusedLocationProviderClient.getCurrentLocation(
+            PRIORITY_HIGH_ACCURACY,
+            cancellationTokenSource.token
+        )
         return currentLocationTask.await(cancellationTokenSource)
     }
 }

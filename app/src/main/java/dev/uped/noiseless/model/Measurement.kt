@@ -8,6 +8,6 @@ data class Measurement(
     val loudness: Double,
     val latitude: String?,
     val longitude: String?,
-    val location: String,
+    val location: String?,
     val timestamp: Long
 )

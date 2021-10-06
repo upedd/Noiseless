@@ -103,7 +103,7 @@ fun MeasurementCard(
             }
             Column(modifier = Modifier.padding(start = 16.dp)) {
                 Text(
-                    measurement.location,
+                    measurement.location ?: "Nieznana lokalizacja",
                     style = MaterialTheme.typography.h6.copy(fontWeight = FontWeight.Bold)
                 )
                 Text(
