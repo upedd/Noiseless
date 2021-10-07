@@ -1,14 +1,17 @@
 package dev.uped.noiseless.ui.screen
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.uped.noiseless.DBMeter
@@ -27,8 +30,10 @@ class MeasurementScreenViewModel : ViewModel() {
 fun MeasurementScreen(
     onMeasurementEnd: (averageLoudness: Double) -> Unit,
     onCancelClicked: () -> Unit,
+    onStop: () -> Unit,
     viewModel: MeasurementScreenViewModel = viewModel()
 ) {
+
     var db by remember { mutableStateOf(0.0) }
     var dbMeter: DBMeter? by remember { mutableStateOf(null) }
     DisposableEffect(Unit) {
@@ -42,10 +47,24 @@ fun MeasurementScreen(
         }
     }
 
+    val lifecycle = LocalLifecycleOwner.current.lifecycle
+    DisposableEffect(lifecycle) {
+        val lifecycleObserver = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_STOP) {
+                onStop()
+            }
+        }
+        lifecycle.addObserver(lifecycleObserver)
+        onDispose {
+            lifecycle.removeObserver(lifecycleObserver)
+        }
+    }
+
     LaunchedEffect(Unit) {
         delay(10000)
         onMeasurementEnd(viewModel.getAverage())
     }
+
 
     MeasurementContent(db, onCancelClicked)
 }
@@ -68,7 +87,7 @@ fun MeasurementContent(dB: Double, onCancelClicked: () -> Unit) {
 
         DBCountCircle(dB = dB, isActive = true)
 
-        OutlinedButton(onClick = onCancelClicked) {
+        Button(onClick = onCancelClicked) {
             Text("Przerwij")
         }
     }

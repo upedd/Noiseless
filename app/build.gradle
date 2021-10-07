@@ -87,4 +87,6 @@ dependencies {
     implementation 'io.insert-koin:koin-androidx-compose:3.1.2'
     implementation 'com.google.accompanist:accompanist-insets:0.19.0'
     implementation 'com.google.accompanist:accompanist-systemuicontroller:0.19.0'
+    implementation 'com.google.accompanist:accompanist-pager:0.19.0'
+    implementation 'com.google.accompanist:accompanist-pager-indicators:0.19.0'
 }

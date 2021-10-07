@@ -13,6 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
+import com.google.accompanist.insets.statusBarsPadding
+import com.google.accompanist.insets.systemBarsPadding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
@@ -86,6 +88,7 @@ fun MeasurementMapScreenContent(mapView: MapView, onExitClicked: () -> Unit) {
         FloatingActionButton(
             modifier = Modifier
                 .padding(16.dp)
+                .padding(top = 16.dp)
                 .align(Alignment.TopStart),
             onClick = onExitClicked,
         ) {

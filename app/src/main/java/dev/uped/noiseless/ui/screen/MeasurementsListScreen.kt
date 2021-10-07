@@ -1,22 +1,28 @@
 package dev.uped.noiseless.ui.screen
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import androidx.lifecycle.ViewModel
+import com.google.accompanist.insets.LocalWindowInsets
+import com.google.accompanist.insets.rememberInsetsPaddingValues
 import dev.uped.noiseless.data.measurement.repository.MeasurementRepository
 import dev.uped.noiseless.model.Measurement
 import dev.uped.noiseless.ui.component.getColorForLoudness
@@ -30,6 +36,7 @@ class MeasurementListScreenViewModel(private val repository: MeasurementReposito
 
 @Composable
 fun MeasurementsListScreen(
+    modifier: Modifier,
     onMeasurementClick: (Measurement) -> Unit,
     vm: MeasurementListScreenViewModel = getViewModel()
 ) {
@@ -40,17 +47,22 @@ fun MeasurementsListScreen(
     LaunchedEffect(Unit) {
         measurements.addAll(vm.getMeasurements())
     }
-    MeasurementsListContent(measurements, onMeasurementClick)
+    MeasurementsListContent(modifier, measurements, onMeasurementClick)
 }
 
 @Composable
 fun MeasurementsListContent(
+    modifier: Modifier,
     measurements: List<Measurement>,
     onMeasurementClick: (Measurement) -> Unit,
     dateFormatter: SimpleDateFormat = SimpleDateFormat("HH:mm, d MMMM yyyy", Locale.getDefault())
 ) {
 
-    LazyColumn(modifier = Modifier.padding(16.dp)) {
+    LazyColumn(
+        modifier = modifier
+            .padding(16.dp)
+            .padding(top = 16.dp) // Status bar
+    ) {
         items(measurements) {
             MeasurementCard(
                 onMeasurementClick = onMeasurementClick,
@@ -71,7 +83,11 @@ fun MeasurementCard(
         modifier = Modifier
             .fillMaxWidth()
             .padding(bottom = 16.dp)
-            .clickable { onMeasurementClick(measurement) }
+            .clickable { onMeasurementClick(measurement) },
+        border = if (!isSystemInDarkTheme()) BorderStroke(
+            Dp.Hairline,
+            MaterialTheme.colors.onSurface.copy(alpha = 0.3f)
+        ) else null
     ) {
         Row(
             modifier = Modifier.padding(16.dp),

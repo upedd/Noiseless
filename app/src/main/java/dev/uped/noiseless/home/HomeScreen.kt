@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.google.android.gms.maps.MapView
 import com.google.maps.android.clustering.ClusterManager
 import com.google.maps.android.ktx.awaitMap
-import dev.uped.noiseless.PermissionHelper
+import dev.uped.noiseless.util.PermissionHelper
 import dev.uped.noiseless.service.location.LocationService
 import dev.uped.noiseless.ui.component.PermissionRationale
 import dev.uped.noiseless.util.MapViewContainer

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Noiseless</string>
     <string name="measuring">Mierzenie poziomu hałasu...</string>
+    <string name="on_boarding1">Zanieczyszczenie hałasem to ciągłe i uporczywe zwiększenie się hałasu na danym obszarze, co wpływa na ludzi i zwierzęta.</string>
+    <string name="on_boarding2">Jest to poważny problem, dźwięki już od poziomu 70 dB mogą powodować problemy ze słuchem a jest to głośność jaką słyszymy przechodzą obok ruchliwej ulicy. Większe poziomy hałasu powodują bóle i zawroty głowy czy podniesienie ciśnienia we krwi.</string>
+    <string name="on_boarding3">Na zwierzęta zanieczyszczenie hałasem oddziaływuje jeszcze gorzej już 40dB może powodować problemy z reprodukcją, obniżenie czujności czy gorszą komunikację.</string>
 </resources>
