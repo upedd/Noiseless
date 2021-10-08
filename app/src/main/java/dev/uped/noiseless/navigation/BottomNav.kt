@@ -8,11 +8,13 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.List
-import androidx.compose.material.icons.filled.Map
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import com.google.accompanist.insets.LocalWindowInsets
 import com.google.accompanist.insets.rememberInsetsPaddingValues
+import dev.uped.noiseless.R
 
 @Composable
 fun BottomNav(
@@ -21,8 +23,6 @@ fun BottomNav(
     onMeasurementClicked: () -> Unit,
     onMeasurementListClicked: () -> Unit
 ) {
-//    val navBackStackEntry by navController.currentBackStackEntryAsState()
-//    val route = navBackStackEntry?.destination?.route
     if (route != null && route == "home" || route == "measurements") {
         BottomNavigation(
             modifier = Modifier.padding(
@@ -32,72 +32,22 @@ fun BottomNav(
             ),
         ) {
             BottomNavigationItem(
-                icon = { Icon(Icons.Filled.Map, contentDescription = null) },
-                label = { Text("Mapa") },
+                icon = { Icon(painterResource(id = R.drawable.map), contentDescription = null) },
+                label = { Text(stringResource(id = R.string.map)) },
                 selected = route == "home",
-                onClick = {
-                    onHomeClicked()
-//                    navController.navigate("home") {
-//                        // Pop up to the start destination of the graph to
-//                        // avoid building up a large stack of destinations
-//                        // on the back stack as users select items
-//                        popUpTo(navController.graph.findStartDestination().id) {
-//                            saveState = true
-//                        }
-//                        // Avoid multiple copies of the same destination when
-//                        // reselecting the same item
-//                        launchSingleTop = true
-//                        // Restore state when reselecting a previously selected item
-//                        restoreState = true
-//                    }
-                }
+                onClick = onHomeClicked
             )
             BottomNavigationItem(
                 icon = { Icon(Icons.Filled.Add, contentDescription = null) },
-                label = { Text("Nowy Pomiar") },
+                label = { Text(stringResource(id = R.string.new_measurement)) },
                 selected = false,
-                onClick = {
-                    onMeasurementClicked()
-//                    microphonePermissionHelper.requestPermission {
-//                        showRationale = true
-//                    }
-//                    if (microphonePermissionHelper.isPermissionGranted.value) {
-//                        navController.navigate("measure") {
-//                            // Pop up to the start destination of the graph to
-//                            // avoid building up a large stack of destinations
-//                            // on the back stack as users select items
-//                            popUpTo(navController.graph.findStartDestination().id) {
-//                                saveState = true
-//                            }
-//                            // Avoid multiple copies of the same destination when
-//                            // reselecting the same item
-//                            launchSingleTop = true
-//                            // Restore state when reselecting a previously selected item
-//                            restoreState = true
-//                        }
-//                    }
-                }
+                onClick = onMeasurementClicked
             )
             BottomNavigationItem(
                 icon = { Icon(Icons.Filled.List, contentDescription = null) },
-                label = { Text("Pomiary") },
+                label = { Text(stringResource(id = R.string.measurements)) },
                 selected = route == "measurements",
-                onClick = {
-                    onMeasurementListClicked()
-//                    navController.navigate("measurements") {
-//                        // Pop up to the start destination of the graph to
-//                        // avoid building up a large stack of destinations
-//                        // on the back stack as users select items
-//                        popUpTo(navController.graph.findStartDestination().id) {
-//                            saveState = true
-//                        }
-//                        // Avoid multiple copies of the same destination when
-//                        // reselecting the same item
-//                        launchSingleTop = true
-//                        // Restore state when reselecting a previously selected item
-//                        restoreState = true
-//                    }
-                }
+                onClick = onMeasurementListClicked
             )
         }
     }

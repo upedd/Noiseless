@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -28,21 +29,22 @@ fun NoiselessApp(
     val navController = rememberNavController()
     val backStackEntry by navController.currentBackStackEntryAsState()
     val context = LocalContext.current
-    val systemUiController = rememberSystemUiController()
-    val useDarkIcons = MaterialTheme.colors.isLight
     var showRationale by remember {
         mutableStateOf(false)
     }
     val sharedPreferences = remember {
         context.getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
     }
-
+    // Change status bar
+    val systemUiController = rememberSystemUiController()
+    val useDarkIcons = MaterialTheme.colors.isLight
     SideEffect {
         systemUiController.setSystemBarsColor(
             Color.Transparent,
             darkIcons = useDarkIcons,
             transformColorForLightContent = { Color.Black })
     }
+
     Scaffold(
         bottomBar = {
             BottomNav(
@@ -104,7 +106,7 @@ fun NoiselessApp(
                         showRationale = false
                     }
                 ) {
-                    Text(text = "Żeby móc wykonać pomiar głośności wyraź zgodę na dostęp od mikrofonu")
+                    Text(text = stringResource(id = R.string.microphone_rationale))
                 }
             }
         }

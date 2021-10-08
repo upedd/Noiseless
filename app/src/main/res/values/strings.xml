@@ -1,7 +1,30 @@
 <resources>
     <string name="app_name">Noiseless</string>
-    <string name="measuring">Mierzenie poziomu hałasu...</string>
+    <string name="measuring">Mierzenie poziomu hałasu…</string>
     <string name="on_boarding1">Zanieczyszczenie hałasem to ciągłe i uporczywe zwiększenie się hałasu na danym obszarze, co wpływa na ludzi i zwierzęta.</string>
     <string name="on_boarding2">Jest to poważny problem, dźwięki już od poziomu 70 dB mogą powodować problemy ze słuchem a jest to głośność jaką słyszymy przechodzą obok ruchliwej ulicy. Większe poziomy hałasu powodują bóle i zawroty głowy czy podniesienie ciśnienia we krwi.</string>
     <string name="on_boarding3">Na zwierzęta zanieczyszczenie hałasem oddziaływuje jeszcze gorzej już 40dB może powodować problemy z reprodukcją, obniżenie czujności czy gorszą komunikację.</string>
+    <string name="decline">Odmów</string>
+    <string name="allow">Zezwól</string>
+    <string name="skip">Pomiń</string>
+    <string name="continue_string">Kontynuuj</string>
+    <string name="measurement_result">Wynik pomiaru głośności:</string>
+    <string name="save_without_location">Zapisz bez lokalizacji</string>
+    <string name="unknown_location">Nieznana lokalizacja</string>
+    <string name="save_and_share">Zapisz i udostępnij</string>
+    <string name="save">Zapisz</string>
+    <string name="location_warning">Udostępniając wynik zgadzasz się na przekazanie twojej lokalizacji. Lokalizacja ta będzie widoczna również dla innych użytkowników aplikacji.</string>
+    <string name="location_state_loading">Ładowanie lokalizacji</string>
+    <string name="location_state_permission_disabled">Brak zgody na korzystanie z lokalizacji</string>
+    <string name="location_state_disabled">Lokalizacja wyłączona</string>
+    <string name="location_state_unknown">Nie znaleziono lokalizacji</string>
+    <string name="cancel">Przerwij</string>
+    <string name="location_disabled">Lokalizacja jest wyłączona</string>
+    <string name="settings">Ustawienia</string>
+    <string name="location_rationale_part1">Żeby móc korzystać ze wszystkich funkcji aplikacji, wyraź zgodę na korzystanie z lokalizacji.</string>
+    <string name="location_rationale_part2">Zgoda ta potrzebna jest do pokazywanie twojej lokalizacji na mapie i przy udostępnianiu wyników.</string>
+    <string name="map">Mapa</string>
+    <string name="new_measurement">Nowy Pomiar</string>
+    <string name="measurements">Pomiary</string>
+    <string name="microphone_rationale">Żeby móc wykonać pomiar głośności wyraź zgodę na dostęp od mikrofonu.</string>
 </resources>

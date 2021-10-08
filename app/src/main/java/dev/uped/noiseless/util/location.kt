@@ -5,6 +5,7 @@ import android.provider.Settings
 
 fun isLocationEnabled(context: Context): Boolean {
     val locationMode = try {
+        // #TODO replace with location services client
         Settings.Secure.getInt(context.contentResolver, Settings.Secure.LOCATION_MODE)
     } catch (e: Settings.SettingNotFoundException) {
         null

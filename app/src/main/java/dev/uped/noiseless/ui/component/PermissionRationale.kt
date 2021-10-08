@@ -5,7 +5,9 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import dev.uped.noiseless.R
 
 @Composable
 fun PermissionRationale(
@@ -31,10 +33,10 @@ fun PermissionRationale(
                 horizontalArrangement = Arrangement.SpaceAround
             ) {
                 OutlinedButton(onClick = onRationaleClose) {
-                    Text("Odmów")
+                    Text(stringResource(id = R.string.decline))
                 }
                 Button(onClick = onRationaleSuccess) {
-                    Text("Zezwól")
+                    Text(stringResource(id = R.string.allow))
                 }
             }
         }

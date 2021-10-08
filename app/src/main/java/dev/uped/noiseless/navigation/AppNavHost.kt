@@ -11,8 +11,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import dev.uped.noiseless.util.PermissionHelper
-import dev.uped.noiseless.home.HomeScreen
-import dev.uped.noiseless.ui.screen.*
+import dev.uped.noiseless.screen.home.HomeScreen
+import dev.uped.noiseless.screen.*
+import dev.uped.noiseless.screen.list.MeasurementsListScreen
+import dev.uped.noiseless.screen.onboarding.OnBoardingScreen
+import dev.uped.noiseless.screen.result.MeasurementResultScreen
 
 @Composable
 fun AppNavHost(

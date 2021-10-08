@@ -1,7 +1,6 @@
 package dev.uped.noiseless
 
 import android.app.Application
-import dev.uped.noiseless.data.DB
 import dev.uped.noiseless.di.appModule
 import logcat.AndroidLogcatLogger
 import logcat.LogPriority
@@ -12,7 +11,6 @@ import org.koin.core.context.GlobalContext.startKoin
 class NoiselessApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        DB.createDriver(applicationContext)
 
         startKoin {
             androidLogger()

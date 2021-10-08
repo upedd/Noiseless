@@ -7,6 +7,9 @@
         <entry key="../../../../../layout/compose-model-1633631367549.xml" value="0.2719594594594595" />
         <entry key="../../../../../layout/compose-model-1633632370251.xml" value="0.2611111111111111" />
         <entry key="../../../../../layout/compose-model-1633640313504.xml" value="0.15667229729729729" />
+        <entry key="../../../../../layout/compose-model-1633685441763.xml" value="0.15667229729729729" />
+        <entry key="../../../../../layout/compose-model-1633685600133.xml" value="0.15667229729729729" />
+        <entry key="../../../../../layout/compose-model-1633685966958.xml" value="0.15667229729729729" />
         <entry key="../../../../layout/compose-model-1633113440860.xml" value="0.2719594594594595" />
         <entry key="../../../../layout/compose-model-1633164574118.xml" value="0.22255067567567569" />
         <entry key="../../../../layout/compose-model-1633166008610.xml" value="0.22170608108108109" />
@@ -22,6 +25,11 @@
         <entry key="..\:/androidProjects/Noiseless/app/src/main/res/font/quicksand_font_family.xml" value="0.23541666666666666" />
         <entry key="..\:/androidProjects/Noiseless/app/src/main/res/layout/marker.xml" value="0.20520833333333333" />
         <entry key="..\:/androidProjects/Noiseless/app/src/main/res/layout/marker_text_view.xml" value="0.20520833333333333" />
+        <entry key="app/src/main/res/font/quicksand_font_family.xml" value="0.30462962962962964" />
+        <entry key="app/src/main/res/layout/marker.xml" value="0.16770833333333332" />
+        <entry key="app/src/main/res/layout/marker_text_view.xml" value="0.16770833333333332" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.18385416666666668" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.18385416666666668" />
       </map>
     </option>
   </component>

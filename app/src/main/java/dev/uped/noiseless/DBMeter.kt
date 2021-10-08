@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.media.*
 import android.os.Build
 import kotlinx.coroutines.*
-import logcat.logcat
 import kotlin.math.abs
 import kotlin.math.log10
 
@@ -14,10 +13,6 @@ class DBMeter(val receiveDB: (Double) -> Unit) {
 
     private var isListening = false
     private var audioRecord: AudioRecord? = null
-
-    init {
-        logcat { "DBMeter init" }
-    }
 
     @SuppressLint("MissingPermission")
     fun start() {
@@ -50,8 +45,6 @@ class DBMeter(val receiveDB: (Double) -> Unit) {
                     }
                     delay(100)
                 }
-            } else {
-                logcat { "Unprocessed unavailable" }
             }
         }
 
